@@ -1,31 +1,70 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>Example App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <title>Veedio</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="stylesheets/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="stylesheets/starter-template.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
 </head>
 <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
 <script> filepicker.setKey('AiQMmteObROuFq6Y3SVsWz'); </script>
-<script type="text/javascript">
-	function doFunction() {
-		filepicker.pick({
-				mimetypes: ['image/*', 'text/plain'],
-				container: 'window',
-				services:['COMPUTER', 'FACEBOOK', 'GMAIL'],
-			},
-			function(InkBlob){
-				console.log(JSON.stringify(InkBlob));
-			},
-			function(FPError){
-				console.log(FPError.toString());
-			}
-		);
-	}
-</script>
 <body>
+   <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Veedio</a>
+      </div>
+      <div class="collapse navbar-collapse">
+      </div><!--/.nav-collapse -->
+    </div>
 
-    {{{body}}}
-    <input id="clickMe" type="button" value="clickme" onclick="doFunction();" />
+    <div class="container">
 
+      <div class="starter-template">
+        <h1>Upload</h1>
+        <p <button type="button" class="btn btn-lg btn-info" onclick="doFunction()">Browse</button></p>
+      </div>
+
+    </div><!-- /.container -->
+    <script type="text/javascript">
+		function doFunction() {
+			filepicker.pick({
+					mimetypes: ['image/*', 'text/plain'],
+					container: 'window',
+					services:['COMPUTER', 'FACEBOOK', 'GMAIL'],
+				},
+				function(InkBlob){
+					console.log(JSON.stringify(InkBlob));
+				},
+				function(FPError){
+					console.log(FPError.toString());
+				}
+			);
+		}
+	</script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="javascripts/jquery.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
 </body>
 </html>
