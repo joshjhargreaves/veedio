@@ -34,6 +34,11 @@ if ('development' == app.get('env')) {
 app.get('/', function(request, response) {
    response.render('home');
 });
+
+app.get('/:id', function(request, response) {
+   response.send('The id is:' + request.params.id);
+});
+
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
