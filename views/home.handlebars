@@ -1,1 +1,25 @@
-<h1>Example App: Home</h1>
+<div class="container">
+
+      <div class="starter-template">
+        <h1>Upload</h1>
+        <p <button type="button" class="btn btn-lg btn-info" onclick="doFunction()">Browse</button></p>
+      </div>
+
+</div><!-- /.container -->
+<script type="text/javascript">
+	function doFunction() {
+		filepicker.pick({
+				mimetypes: ['image/*', 'text/plain'],
+				container: 'window',
+				services:['COMPUTER', 'FACEBOOK', 'GMAIL'],
+			},
+			function(InkBlob){
+				document.write(JSON.stringify(InkBlob));
+				console.log(JSON.stringify(InkBlob));
+			},
+			function(FPError){
+				console.log(FPError.toString());
+			}
+		);
+	}
+</script>

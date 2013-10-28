@@ -39,6 +39,10 @@ app.get('/:id', function(request, response) {
    response.send('The id is:' + request.params.id);
 });
 
+app.get('/upload/:url', function(request, response) {
+   response.send('The id is:' + request.params.id);
+});
+
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
