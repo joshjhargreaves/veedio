@@ -14,8 +14,16 @@
 				services:['COMPUTER', 'FACEBOOK', 'GMAIL'],
 			},
 			function(InkBlob){
-				document.write(JSON.stringify(InkBlob));
-				console.log(JSON.stringify(InkBlob));
+				var val = JSON.stringify(InkBlob);
+				$.post("http://localhost:3000/upload",
+			    {
+			      url: InkBlob.url,
+			    },
+			    function(data,status){
+			      alert("Data: " + data + "\nStatus: " + status);
+			      document.write('localhost:3000/cdn/' + data);
+				  console.log('localhost:3000/cdn/' + data);
+			    });
 			},
 			function(FPError){
 				console.log(FPError.toString());

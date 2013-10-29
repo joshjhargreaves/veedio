@@ -45,6 +45,8 @@ app.get('/', function(request, response) {
    response.render('home');
 });
 
+/*Finds the corresponding ink url in the database and builds
+html from handlebars template url*/
 app.get('/cdn/:id', function(request, response) {
    var collection = db.get('urls');
    collection.find({_id : request.params.id}, function(e,docs){
@@ -56,16 +58,26 @@ app.get('/cdn/:id', function(request, response) {
 	})
 });
 
+//lists all of the collections in the database more for debugging
 app.get('/collections',function(req,res){
   db.driver.collectionNames(function(e,names){
     res.json(names);
   })
 });
 
+app.get('/urls', function(request, response) {
+   var collection = db.get('urls');
+   collection.find({}, function(e,docs){
+      response.send(docs);
+  })
+});
+
+/*Takes the corresponding value of the url key in the request
+and returns a url that the image can be accessed at*/
 app.post('/upload', function(req, res) {
 	var collection = db.get('urls');
 	collection.insert({inkurl: req.body.url}, function(err,docsInserted){
-    	res.send(docsInserted);
+    	res.send(docsInserted._id);
 	});
 });
 
